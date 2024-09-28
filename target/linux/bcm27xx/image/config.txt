@@ -12,3 +12,11 @@ include distroconfig.txt
 
 [all]
 # Place your custom settings here.
+
+[pi5]
+# Enable 32bit PCIe DMA overlay for proper PCIe device bringup
+dtoverlay=pcie-32bit-dma-pi5
+
+# Enable use of power switch/button
+dtoverlay=gpio-shutdown,gpio_pin=20
+
