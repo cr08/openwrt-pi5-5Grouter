@@ -1,3 +1,7 @@
+## Fork notes
+
+This fork is for my own personal use only to hold various patches and mods for my Raspberry Pi 5 based 5G router project which will be documented elsewhere. Zero support will be given!
+
 ![OpenWrt logo](include/logo.png)
 
 OpenWrt Project is a Linux operating system targeting embedded devices. Instead
