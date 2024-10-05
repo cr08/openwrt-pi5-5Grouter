@@ -14,6 +14,9 @@ include distroconfig.txt
 # Place your custom settings here.
 
 [pi5]
+# Enable the PCIe external connector
+dtparam=pciex1
+
 # Enable 32bit PCIe DMA overlay for proper PCIe device bringup
 dtoverlay=pcie-32bit-dma-pi5
 
