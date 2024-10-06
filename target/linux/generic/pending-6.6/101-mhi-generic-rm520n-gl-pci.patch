@@ -7,7 +7,7 @@ index 08844ee7..7043d366 100644
  	{ PCI_DEVICE(PCI_VENDOR_ID_QCOM, 0x0306),
  		.driver_data = (kernel_ulong_t) &mhi_qcom_sdx55_info },
 +	/* RM520N-GL variant with Qualcomm vendor and subvendor ID */
-+	{ PCI_DEVICE_SUB(PCI_VENDOR_ID_QCOM, 0x0308, PCI_VENDOR_ID_QCOM, 0x5201),
++	{ PCI_DEVICE_SUB(PCI_VENDOR_ID_QCOM, 0x0308, PCI_VENDOR_ID_QCOM, 0x0308),
 +		.driver_data = (kernel_ulong_t) &mhi_quectel_rm5xx_info },
  	/* Telit FN990 */
  	{ PCI_DEVICE_SUB(PCI_VENDOR_ID_QCOM, 0x0308, 0x1c5d, 0x2010),
