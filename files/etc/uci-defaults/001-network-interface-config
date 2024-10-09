@@ -14,6 +14,32 @@ uci set network.TM.apn="fast.t-mobile.com"
 uci set network.TM.auth="none"
 uci set network.TM.pdptype="ipv4v6"
 
-uci commit network
-service network restart
+uci set network.trm_wwan=interface
+uci set network.trm_wwan.proto="dhcp"
+uci set network.trm_wwan6=interface
+uci set network.trm_wwan6.device="@trm_wwan"
+uci set network.trm_wwan6.proto="dhcpv6"
+uci set network.trm_wwan6.reqaddress="try"
+uci set network.trm_wwan6.reqprefix="auto"
+
+uci set travelmate.global=travelmate
+uci set travelmate.global.trm_enabled="1"
+uci set travelmate.global.trm_captive="1"
+uci set travelmate.global.trm_proactive="1"
+uci set travelmate.global.trm_netcheck="1"
+uci set travelmate.global.trm_autoadd="1"
+uci set travelmate.global.trm_mail="0"
+uci set travelmate.global.trm_debug="0"
+uci set travelmate.global.trm_radio="radio1"
+uci set travelmate.global.trm_vpn="0"
+uci set travelmate.global.trm_randomize="0"
+uci set travelmate.global.trm_maxautoadd="0"
+uci set travelmate.global.trm_captiveurl="http://detectportal.firefox.com"
+uci set travelmate.global.trm_useragent="Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/118.0"
+uci set travelmate.global.trm_nice="0"
+uci set travelmate.global.trm_iface="trm_wwan"
+
+uci commit
+reboot
+#service network restart
 
