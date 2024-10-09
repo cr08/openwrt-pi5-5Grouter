@@ -1,5 +1,7 @@
+# Set LAN IP to preferred address
 uci set network.lan.ipaddr="172.17.17.1"
 
+# Add WWAN Card #1 - TODO: Automate based on inserted SIM
 uci set network.VZW=interface
 uci set network.VZW.proto="quectel"
 uci set network.VZW.device="/dev/mhi_QMI0"
@@ -7,6 +9,7 @@ uci set network.VZW.apn="vzwinternet"
 uci set network.VZW.auth="none"
 uci set network.VZW.pdptype="ipv4v6"
 
+# Add WWAN Card #2 - TODO: Automate based on inserted SIM
 uci set network.TM=interface
 uci set network.TM.proto="quectel"
 uci set network.TM.device="/dev/mhi_QMI01"
@@ -14,6 +17,7 @@ uci set network.TM.apn="fast.t-mobile.com"
 uci set network.TM.auth="none"
 uci set network.TM.pdptype="ipv4v6"
 
+# Add prerequisite interface for Travelmate
 uci set network.trm_wwan=interface
 uci set network.trm_wwan.proto="dhcp"
 uci set network.trm_wwan6=interface
@@ -22,6 +26,7 @@ uci set network.trm_wwan6.proto="dhcpv6"
 uci set network.trm_wwan6.reqaddress="try"
 uci set network.trm_wwan6.reqprefix="auto"
 
+# Add Travelmate settings/enable
 uci set travelmate.global=travelmate
 uci set travelmate.global.trm_enabled="1"
 uci set travelmate.global.trm_captive="1"
@@ -39,7 +44,16 @@ uci set travelmate.global.trm_useragent="Mozilla/5.0 (X11; Linux x86_64; rv:109.
 uci set travelmate.global.trm_nice="0"
 uci set travelmate.global.trm_iface="trm_wwan"
 
+# Add OpenWrt AP to Travelmate as disabled to prevent connecting to itself
+uci set travelmate.@uplink[0]=uplink
+uci set travelmate.@uplink[0].device="radio1"
+uci set travelmate.@uplink[0].ssid="OpenWrt"
+uci set travelmate.@uplink[0].opensta="1"
+uci set travelmate.@uplink[0].con_start_expiry="0"
+uci set travelmate.@uplink[0].con_end_expiry="0"
+uci set travelmate.@uplink[0].enabled="0"
+
 uci commit
-reboot
-#service network restart
+service network restart
+
 
