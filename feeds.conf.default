@@ -6,5 +6,6 @@ src-git routing https://github.com/openwrt/routing.git
 #src-git video https://github.com/openwrt/video.git
 #src-git targets https://github.com/openwrt/targets.git
 #src-git oldpackages http://git.openwrt.org/packages.git
+src-git mrhaav https://github.com/mrhaav/openwrt-packages.git
 src-git imm_packages https://github.com/immortalwrt/packages.git
 src-git imm_luci https://github.com/immortalwrt/luci.git
