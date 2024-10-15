@@ -28,7 +28,7 @@ uci set network.trm_wwan6.reqprefix="auto"
 
 # Add Travelmate settings/enable
 uci set travelmate.global=travelmate
-uci set travelmate.global.trm_enabled="1"
+uci set travelmate.global.trm_enabled="0"
 uci set travelmate.global.trm_captive="1"
 uci set travelmate.global.trm_proactive="1"
 uci set travelmate.global.trm_netcheck="1"
@@ -56,4 +56,4 @@ uci set travelmate.@uplink[0].enabled="0"
 uci commit
 service network restart
 
-
+exit 0
