@@ -9,3 +9,5 @@ src-git routing https://github.com/openwrt/routing.git
 src-git mrhaav https://github.com/mrhaav/openwrt-packages.git
 src-git imm_packages https://github.com/immortalwrt/packages.git
 src-git imm_luci https://github.com/immortalwrt/luci.git
+src-git srtla https://github.com/cr08/srtla-packages.git
+
