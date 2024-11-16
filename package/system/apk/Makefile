@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=apk
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_SOURCE_URL=https://gitlab.alpinelinux.org/alpine/apk-tools.git
 PKG_SOURCE_PROTO:=git
@@ -52,20 +52,21 @@ endef
 MESON_HOST_VARS+=VERSION=$(PKG_VERSION)
 MESON_VARS+=VERSION=$(PKG_VERSION)
 
-MESON_HOST_ARGS += \
+MESON_COMMON_ARGS = \
 	-Dcompressed-help=false \
 	-Ddocs=disabled \
+	-Dhelp=enabled \
+	-Dlua_version=5.1 \
 	-Durl_backend=wget \
-	-Dcrypto_backend=openssl \
 	-Dzstd=false
 
+MESON_HOST_ARGS += \
+	$(MESON_COMMON_ARGS) \
+	-Dcrypto_backend=openssl
+
 MESON_ARGS += \
-	-Dlua_version=5.1 \
-	-Dcompressed-help=false \
-	-Ddocs=disabled \
-	-Durl_backend=wget \
-	-Dcrypto_backend=$(BUILD_VARIANT) \
-	-Dzstd=false
+	$(MESON_COMMON_ARGS) \
+	-Dcrypto_backend=$(BUILD_VARIANT)
 
 HOST_LDFLAGS += \
 	-Wl,-rpath $(STAGING_DIR_HOST)/lib
